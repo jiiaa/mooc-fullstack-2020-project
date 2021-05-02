@@ -1,0 +1,24 @@
+POST http://localhost:3001/api/signin
+Content-Type: application/json
+
+{
+  "username": "test@mail.com",
+  "password": "erittainsalainen"
+}
+
+###
+
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "test@mail.com",
+  "password": "erittainsalainen"
+}
+
+###
+
+GET http://localhost:3001/api/user/likes/5f85eb6f12b90c455cb560b7
+Content-Type: application/json
+
+###

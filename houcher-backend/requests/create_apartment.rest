@@ -1,0 +1,23 @@
+POST http://localhost:3001/api/apartments/
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Impha2VudGVzdGlAdGVzdGkuZmkiLCJpZCI6IjVmNGNkM2IwNjg5NWFmNTJlNGFmZjFkMiIsImlhdCI6MTU5OTA0NTY5MH0.UbIkxnWlp2xgfDBXoVDPZkux0ncCAzWbaPytpPaAUCg
+
+{
+  "streetAddress": "Sylvesterinkuja 12 G",
+  "zipCode": "00370",
+  "city": "Helsinki",
+  "apartmentType": "rivitalo",
+  "surfaceArea": "114",
+  "numberOfRooms": "5",
+  "buildYear": "1966",
+  "hasSauna": false,
+  "hasBalcony": true,
+  "hasOwnPlot": true,
+  "hasElevator": false,
+  "numberOfFloors": "2",
+  "apartmentSetting": "3h, k",
+  "header": "otsikko",
+  "description": "diipa daapa duu",
+  "images": "link",
+  "price": "40e"
+}

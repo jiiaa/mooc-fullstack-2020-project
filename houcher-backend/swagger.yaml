@@ -1,0 +1,177 @@
+swagger: "2.0"
+
+info:
+  version: 1.0.0
+  title: Houcher Backend
+  description: The API description of the Houcher application's backend
+  
+schemes:
+  - http
+  - https
+host: localhost:3000
+basePath: /api
+
+paths:
+  /signin:
+    post:
+      summary: A new user signs in
+      description: An account is created for the new user
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: user
+          in: body
+          required: true
+          description: the object containing a username and a password
+          schema:
+            $ref: "#/definitions/User_login"
+      responses:
+        201:
+          description: The user was successfully created
+          schema:
+            type: object
+            required:
+              - id
+              - username
+            properties:
+              id:
+                type: string
+              username:
+                type: string
+        403:
+          description: The username exists already
+          schema:
+            type: object
+            required:
+              - message
+            properties:
+              message:
+                type: string
+  /login:
+    post:
+      summary: A user logins in
+      description: A user logins in to the service with username and password
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: user
+          in: body
+          required: true
+          description: the object containing a username and a password
+          schema:
+            $ref: "#/definitions/User_login"
+      responses:
+        200:
+          description: The login is accepted
+          schema:
+            $ref: "#/definitions/User_logged_in"
+        401:
+          description: Invalid username or password
+          schema:
+            type: object
+            required:
+              - message
+            properties:
+              message:
+                type: string
+  /user:
+    get:
+      summary: Get all users
+      description: Returns a list containing all users
+      responses:
+        200:
+          description: A list of users
+          schema:
+            $ref: "#/definitions/Users"
+  /user/{id}:
+    get:
+      summary: Get a user
+      description: Returns a single user for its id
+      parameters:
+        - name: token
+          in: header
+          required: true
+          description: JWT token
+          type: string
+        - name: id
+          in: path
+          required: true
+          description: The user's id to retrieve information
+          type: string
+      responses:
+        200:
+          description: The user's account info
+          schema:
+            $ref: "#/definitions/User"
+        404:
+          description: The username was not found
+          schema:
+            type: object
+            required:
+              - message
+            properties:
+              message:
+                type: string
+    delete:
+      summary: Delete a user
+      description: Delete the user for its id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The user's id to delete
+          type: string
+      responses:
+        404:
+          description: The user was not found
+definitions:
+  User_login:
+    required:
+      - username
+      - password
+    properties:
+      username:
+        type: string
+      passowrd:
+        type: string
+  User_logged_in:
+    required:
+      - token
+      - id
+      - username
+    properties:
+      token:
+        type: string
+      id:
+        type: string
+      username:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      alias:
+        type: string
+  User:
+    required:
+      - id
+      - username
+    properties:
+      id:
+        type: string
+      username:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      alias:
+        type: string
+  Users:
+    type: array
+    items:
+      $ref: "#/definitions/User"

@@ -1,0 +1,1 @@
+GET http://localhost:3001/api/apartments/5f4feba5379b4e30b4fdd7cf

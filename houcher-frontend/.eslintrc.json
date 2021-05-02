@@ -1,0 +1,29 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest/globals": true
+  },
+  "extends": [
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "prettier",
+    "react",
+    "jest"
+  ],
+  "rules": {
+    "semi": [
+      "error",
+      "always"
+    ],
+    "prettier/prettier": "error"
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  }
+}
